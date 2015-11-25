@@ -4,6 +4,8 @@ import com.whlib.testjavalib.ABaseTry;
 import com.whlib.testjavalib.Utils.DemoClassA;
 import com.whlib.testjavalib.Utils.DemoClassWithoutDefaultConstructor;
 
+import java.lang.reflect.Constructor;
+
 /**
  * Created by wanghui5-s on 2015/11/25.
  */
@@ -16,9 +18,20 @@ public class TryNewInstanceIfInvokeConstructor extends ABaseTry {
         try {
             DemoClassA da = DemoClassA.class.newInstance();
             da.out();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        try {
             DemoClassWithoutDefaultConstructor da2 = DemoClassWithoutDefaultConstructor.class.newInstance(); // #1
             da2.out();
-        } catch(Exception e) {
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            Constructor<DemoClassWithoutDefaultConstructor> constructor = DemoClassWithoutDefaultConstructor.class.getConstructor(int.class);
+            DemoClassWithoutDefaultConstructor da3 = constructor.newInstance(8);
+            da3.out();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         outputConclusionIfTryDone("reflection newInstance() will call default constructor.",

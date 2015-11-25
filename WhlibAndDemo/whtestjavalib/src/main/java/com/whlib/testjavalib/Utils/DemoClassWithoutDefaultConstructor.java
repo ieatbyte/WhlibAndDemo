@@ -11,6 +11,7 @@ public class DemoClassWithoutDefaultConstructor {
 
     public DemoClassWithoutDefaultConstructor(int num) {
         Loger.d("in DemoClassWithoutDefaultConstructor(int num) Constructor");
+        this.num = num;
     }
 
     public void out() {
