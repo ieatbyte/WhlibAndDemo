@@ -11,7 +11,16 @@ public class ABaseTry implements ATry {
     }
 
     @Override
-    public void outputConclusionIfTryDone(String conclusion) {
-        Loger.d("****** " + getClass().getSimpleName() + " Conclusion: " + conclusion);
+    public void outputConclusionIfTryDone(String... conclusions) {
+        Loger.d("$ " + getClass().getSimpleName() + " Conclusion: ");
+        if (conclusions != null && conclusions.length > 0) {
+            int i = 0;
+            for (String e : conclusions) {
+                Loger.d("#" + i++ + ": " + e);
+            }
+        } else {
+            Loger.d("$ No conclusion.");
+        }
+        Loger.d("****** Done.");
     }
 }

@@ -15,7 +15,7 @@ public class Main {
                 ATry aTry = (ATry) tryClass.newInstance();
                 aTry.startTry();
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                e.printStackTrace();
             }
         }
     }

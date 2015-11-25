@@ -6,5 +6,5 @@ package com.whlib.testjavalib;
 public interface ATry {
 
     void startTry();
-    void outputConclusionIfTryDone(String conclusion);
+    void outputConclusionIfTryDone(String... conclusions);
 }
