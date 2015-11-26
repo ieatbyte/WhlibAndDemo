@@ -1,12 +1,12 @@
 package com.whlib.testjavalib;
 
-import com.whlib.testjavalib.reflection.TryNewInstanceIfInvokeConstructor;
+import com.whlib.testjavalib.innerclass.TryNonStaticInnerClassConstructor;
 
 public class Main {
 
     public static void main(String[] args) {
         System.out.println("hello world!");
-        startTry(TryNewInstanceIfInvokeConstructor.class);
+        startTry(TryNonStaticInnerClassConstructor.class);
     }
 
     public static <T> void startTry(Class<? extends ATry> tryClass) {

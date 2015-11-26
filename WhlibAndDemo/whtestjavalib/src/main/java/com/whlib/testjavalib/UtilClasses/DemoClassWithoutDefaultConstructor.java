@@ -1,4 +1,4 @@
-package com.whlib.testjavalib.Utils;
+package com.whlib.testjavalib.UtilClasses;
 
 import com.whlib.testjavalib.Loger;
 

@@ -1,28 +1,31 @@
 package com.whlib.testjavalib.reflection;
 
 import com.whlib.testjavalib.ABaseTry;
-import com.whlib.testjavalib.Utils.DemoClassA;
-import com.whlib.testjavalib.Utils.DemoClassWithoutDefaultConstructor;
+import com.whlib.testjavalib.UtilClasses.DemoClassA;
+import com.whlib.testjavalib.UtilClasses.DemoClassWithoutDefaultConstructor;
 
 import java.lang.reflect.Constructor;
 
 /**
  * Created by wanghui5-s on 2015/11/25.
+ *
+ * Conclusion:
+ * #1: reflection newInstance() will call default constructor.
+ * #2: reflection newInstance() will throw InstantiationException if no default constructor.
  */
 public class TryNewInstanceIfInvokeConstructor extends ABaseTry {
 
     @Override
     public void startTry() {
         super.startTry();
-
         try {
-            DemoClassA da = DemoClassA.class.newInstance();
+            DemoClassA da = DemoClassA.class.newInstance(); // #1
             da.out();
         } catch(Exception e) {
             e.printStackTrace();
         }
         try {
-            DemoClassWithoutDefaultConstructor da2 = DemoClassWithoutDefaultConstructor.class.newInstance(); // #1
+            DemoClassWithoutDefaultConstructor da2 = DemoClassWithoutDefaultConstructor.class.newInstance(); // #2
             da2.out();
         } catch (Exception e) {
             e.printStackTrace();
@@ -38,8 +41,8 @@ public class TryNewInstanceIfInvokeConstructor extends ABaseTry {
                 "reflection newInstance() will throw InstantiationException if no default constructor.");
     }
 
-// #1
-//    java.lang.InstantiationException: com.whlib.testjavalib.Utils.DemoClassWithoutDefaultConstructor
+// #2
+//    java.lang.InstantiationException: DemoClassWithoutDefaultConstructor
 //    at java.lang.Class.newInstance(Class.java:364)
 //    at com.whlib.testjavalib.reflection.TryNewInstanceIfInvokeConstructor.startTry(TryNewInstanceIfInvokeConstructor.java:19)
 //    at com.whlib.testjavalib.Main.startTry(Main.java:16)
